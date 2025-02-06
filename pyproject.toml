@@ -1,0 +1,8 @@
+[project]
+name = "YourProjectName"
+version = "1.0.0"
+authors = [
+  { name="Harpia Harpyja", email="joaovitor@harpia.tec.br" },
+]
+description = "Your project description here"
+readme = "README.md"

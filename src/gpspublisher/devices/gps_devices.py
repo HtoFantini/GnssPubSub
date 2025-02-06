@@ -1,0 +1,32 @@
+import datetime
+
+from gpspublisher.devices.interface_device import Device
+from gpspublisher.utils.utils import get_gps_info
+from gpspublisher.utils.constants import DICT_NMEA, DICT_DEFAULT_PORTS
+
+
+class Neo6M(Device):
+    """_summary_
+    """
+
+    def __init__(self):
+        _protocol = DICT_NMEA
+        _baudrate = 9600
+        _port = DICT_DEFAULT_PORTS["Serial"]
+        super().__init__(_protocol, _baudrate, _port)
+
+    def read_raw_data(self):
+        return get_gps_info(protocol=self._protocol, baudrate=self._baudrate, serial_port=self._port)
+
+    def filtered_gps_data(self):
+        dicio_out = {key: value for key, value in self.read_raw_data().items() if value is not None}
+        for key in dicio_out:
+            if key == 'Data':
+                try:
+                    datetime.datetime.strptime(dicio_out['Data'], '%Y-%m-%d')
+                except Exception:
+                    dicio_out['Data'] = '1900-01-01'
+            if key == 'Data_hora_UTC':
+                if not isinstance(dicio_out['Data_hora_UTC'], datetime.time):
+                    dicio_out['Data_hora_UTC'] = datetime.time(1, 0, 1, 10101, tzinfo=datetime.timezone.utc)
+        return dicio_out

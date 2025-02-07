@@ -19,8 +19,7 @@ class GPSPublisher:
         with self._lock:
             self._gps_data = gps_data
 
-    # TODO rename get
-    def get_newest_gps_data(self):
+    def get_gps_data(self):
         """Retorna o ultimo dado de GPS publicado
         """
         with self._lock:

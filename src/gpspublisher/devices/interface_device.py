@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Device(ABC):
-    """_summary_
+    """Classe abstrata com as funcoes base para qualuqer device criado
 
     Args:
         ABC (_type_): _description_

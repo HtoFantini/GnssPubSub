@@ -6,7 +6,7 @@ from gpspublisher.utils.constants import DICT_NMEA, DICT_DEFAULT_PORTS
 
 
 class Neo6M(Device):
-    """_summary_
+    """Classe para obtenção dos dados do GPS Neo-6m
     """
 
     def __init__(self):

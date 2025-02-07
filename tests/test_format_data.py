@@ -1,3 +1,4 @@
+"Test formatacao dos dados conforme o tipo desejado"
 import datetime
 
 from gpspublisher.utils.utils_format import format_dict_by_type

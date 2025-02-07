@@ -1,3 +1,4 @@
+"Test leitura de portas"
 from gpspublisher.utils.utils_read import read_raw_serial
 
 

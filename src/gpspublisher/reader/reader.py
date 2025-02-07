@@ -10,6 +10,7 @@ class GPSReader:
 
     def __init__(self, publisher, **kwargs):
         self._publisher = publisher
+        # TODO: get config public
         self._config = kwargs
         self._thr = threading.Thread(
             target=self.target_read_loop, daemon=True
@@ -19,6 +20,7 @@ class GPSReader:
     def start_thread(self):
         """Encapsulamento para inicialização da thread
         """
+        # TODO: stop_flag reset
         self._thr.start()
 
     def stop_thread(self):
@@ -44,6 +46,7 @@ class GPSReader:
             raise ValueError(f"Device '{device_name}' não reconhecido")
 
         while not self._stop_flag.is_set():
+            # TODO: explicit call read/filter/format
             f_gps_data = dev_obj.filtered_gps_data()
             self._publisher.publish_gps_data(f_gps_data)
             time.sleep(read_time)

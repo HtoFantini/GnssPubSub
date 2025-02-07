@@ -94,12 +94,16 @@ def get_gps_nmea_info_serial(protocol, baudrate, serial_port=None):
         serial_port = DICT_DEFAULT_PORTS['Serial']
 
     def get_gps_dict(serial_port=None):
-        gps_info = dict(zip(extract_keys(), ""))
-        li_keys_nmea = [list(ele.keys())[0] for ele in protocol]
 
         lines = serial_port.read(size=int(10e5)) \
             .decode('utf-8', errors='replace') \
             .strip()
+
+        # TODO until here: read_raw() -> str
+
+        # TODO from here: filter_raw(str) -> dict
+        gps_info = dict(zip(extract_keys(), ""))
+        li_keys_nmea = [list(ele.keys())[0] for ele in protocol]
 
         # lines = ("$GPVTG,140.88,T,,M,8.04,N,14.89,K,D*05\r\n"
         #         "$GPGGA,184353.07,1929.045,S,02410.506,"
@@ -116,10 +120,12 @@ def get_gps_nmea_info_serial(protocol, baudrate, serial_port=None):
                     datef = str_datetime_formated()
                     print(f'{datef}: gps_info: error in dicio_upd '
                           f'{dicio_upd["error"]}')
+        # TODO until here: filter_raw(str) -> dict
         return gps_info
 
     with serial.Serial(serial_port, baudrate, timeout=1,
                        bytesize=serial.EIGHTBITS,
                        parity=serial.PARITY_NONE,
                        stopbits=serial.STOPBITS_ONE) as serial_port:
+        # TODO read_raw: no need get_gps_dict funtion
         return get_gps_dict(serial_port)

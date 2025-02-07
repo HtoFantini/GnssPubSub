@@ -15,9 +15,11 @@ class GPSPublisher:
         Args:
             gps_data (_type_): dado de GPS recebido
         """
+        # TODO priority writer over reader
         with self._lock:
             self._gps_data = gps_data
 
+    # TODO rename get
     def get_newest_gps_data(self):
         """Retorna o ultimo dado de GPS publicado
         """

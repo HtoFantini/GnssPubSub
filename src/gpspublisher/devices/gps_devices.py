@@ -18,8 +18,11 @@ class Neo6M(Device):
     def read_raw_data(self):
         return get_gps_nmea_info_serial(protocol=self._protocol, baudrate=self._baudrate, serial_port=self._port)
 
+    # TODO Principio de Responsabilidade Única (read_raw_data: str, filter_raw_data, format_data)
     def filtered_gps_data(self):
+        # TODO from here: format_data(dict) -> dict* formatado
         dicio_out = {key: value for key, value in self.read_raw_data().items() if value is not None}
+
         for key in dicio_out:
             if key == 'Data':
                 try:

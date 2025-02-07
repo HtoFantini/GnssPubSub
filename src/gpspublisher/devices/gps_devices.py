@@ -1,7 +1,7 @@
 import datetime
 
 from gpspublisher.devices.interface_device import Device
-from gpspublisher.utils.utils import get_gps_info
+from gpspublisher.utils.utils import get_gps_nmea_info_serial
 from gpspublisher.utils.constants import DICT_NMEA, DICT_DEFAULT_PORTS
 
 
@@ -16,7 +16,7 @@ class Neo6M(Device):
         super().__init__(_protocol, _baudrate, _port)
 
     def read_raw_data(self):
-        return get_gps_info(protocol=self._protocol, baudrate=self._baudrate, serial_port=self._port)
+        return get_gps_nmea_info_serial(protocol=self._protocol, baudrate=self._baudrate, serial_port=self._port)
 
     def filtered_gps_data(self):
         dicio_out = {key: value for key, value in self.read_raw_data().items() if value is not None}

@@ -88,7 +88,7 @@ def _get_fields_pynmea_parse(line_gps: str, type_line: str = None) -> Dict:
     return dicio
 
 
-def get_gps_info(protocol, baudrate, serial_port=None):
+def get_gps_nmea_info_serial(protocol, baudrate, serial_port=None):
 
     if serial_port is None:
         serial_port = DICT_DEFAULT_PORTS['Serial']

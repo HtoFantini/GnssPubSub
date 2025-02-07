@@ -28,3 +28,17 @@ DICT_NMEA = [
 ]
 
 SOG_CONST = 1.852
+
+
+DICT_NMEA_TYPES = {
+    'Velocidade': 'float',
+    'Direcao_deslocamento_graus_norte': 'float',
+    'Data_hora_UTC': 'datetime',
+    'Latitude': 'float',
+    'Longitude': 'float',
+    'Altitude': 'float',
+    'Indicador_qualidade_GPS': 'int',
+    'Numero_Satelites_Utilizado': 'int',
+    'Data': '1900-01-01'
+
+}

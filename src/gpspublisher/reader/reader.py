@@ -22,7 +22,7 @@ class GPSReader:
     def start_thread(self):
         """Encapsulamento para inicialização da thread
         """
-        # TODO: stop_flag reset
+        self._stop_flag.clear()
         self._thr.start()
 
     def stop_thread(self):

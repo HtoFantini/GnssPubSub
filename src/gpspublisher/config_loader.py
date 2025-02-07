@@ -1,6 +1,8 @@
 import os
 import json
 
+# TODO: load config is a definition from script, not from GPS remove from this repository
+
 
 def load_config(config_file):
     """_summary_

@@ -10,12 +10,14 @@ class GPSReader:
 
     def __init__(self, publisher, **kwargs):
         self._publisher = publisher
-        # TODO: get config public
         self._config = kwargs
         self._thr = threading.Thread(
             target=self.target_read_loop, daemon=True
         )
         self._stop_flag = threading.Event()
+
+    def get_configs(self):
+        return self._config
 
     def start_thread(self):
         """Encapsulamento para inicialização da thread

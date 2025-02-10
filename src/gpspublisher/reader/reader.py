@@ -51,4 +51,10 @@ class GPSReader:
             # TODO: explicit call read/filter/format
             f_gps_data = dev_obj.filtered_gps_data()
             self._publisher.publish_gps_data(f_gps_data)
+            # read, filter and format data from port
+            raw_data = dev_obj.read_raw_data()
+            dict_filtered_raw = dev_obj.filter_raw_data(raw_data)
+            dict_formated_data = dev_obj.format_gps_data(dict_filtered_raw)
+
+            self._publisher.publish_gps_data(dict_formated_data)
             time.sleep(read_time)

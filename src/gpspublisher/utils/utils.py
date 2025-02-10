@@ -1,11 +1,10 @@
 from functools import wraps
-import serial
 import pynmea2
 import time
 from typing import Dict
 from typing import List
 
-from gpspublisher.utils.constants import DICT_NMEA, SOG_CONST, DICT_DEFAULT_PORTS
+from gpspublisher.utils.constants import DICT_NMEA, SOG_CONST
 
 
 def str_datetime_formated() -> str:
@@ -86,46 +85,3 @@ def _get_fields_pynmea_parse(line_gps: str, type_line: str = None) -> Dict:
             dicio[nome_dic] = str(dicio[nome_dic])
 
     return dicio
-
-
-def get_gps_nmea_info_serial(protocol, baudrate, serial_port=None):
-
-    if serial_port is None:
-        serial_port = DICT_DEFAULT_PORTS['Serial']
-
-    def get_gps_dict(serial_port=None):
-
-        lines = serial_port.read(size=int(10e5)) \
-            .decode('utf-8', errors='replace') \
-            .strip()
-
-        # TODO until here: read_raw() -> str
-
-        # TODO from here: filter_raw(str) -> dict
-        gps_info = dict(zip(extract_keys(), ""))
-        li_keys_nmea = [list(ele.keys())[0] for ele in protocol]
-
-        # lines = ("$GPVTG,140.88,T,,M,8.04,N,14.89,K,D*05\r\n"
-        #         "$GPGGA,184353.07,1929.045,S,02410.506,"
-        #         "E,1,04,2.6,100.00,M,-33.9,M,,0000*6D\r\n"
-        #         "$GPRMC,123519,A,4807.038,N,01131.000,E"
-        #         ",022.4,084.4,230394,003.1,W*6A")
-
-        for line_ in lines.split('\r\n'):
-            if any(cod in line_ for cod in li_keys_nmea):
-                dicio_upd = _get_fields_pynmea_parse(line_)
-                gps_info = {**gps_info, **dicio_upd}
-
-                if 'error' in dicio_upd:
-                    datef = str_datetime_formated()
-                    print(f'{datef}: gps_info: error in dicio_upd '
-                          f'{dicio_upd["error"]}')
-        # TODO until here: filter_raw(str) -> dict
-        return gps_info
-
-    with serial.Serial(serial_port, baudrate, timeout=1,
-                       bytesize=serial.EIGHTBITS,
-                       parity=serial.PARITY_NONE,
-                       stopbits=serial.STOPBITS_ONE) as serial_port:
-        # TODO read_raw: no need get_gps_dict funtion
-        return get_gps_dict(serial_port)

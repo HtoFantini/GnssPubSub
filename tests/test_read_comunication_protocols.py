@@ -2,7 +2,7 @@
 from gpspublisher.utils.utils_read import read_raw_serial
 
 
-def test_read_raw_serial_returns_string():
+def test_read_raw_serial_returns_string(test=True):
     """
     Testa se a função read_raw_serial retorna uma string com os dados \
         simulados da porta serial.
@@ -16,7 +16,7 @@ def test_read_raw_serial_returns_string():
         b",022.4,084.4,230394,003.1,W*6A         "
     )
 
-    result = read_raw_serial()
+    result = read_raw_serial(test=test)
 
     # Verifica se o resultado é uma string
     assert isinstance(result, str), "A função não retornou uma string"

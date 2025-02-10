@@ -2,6 +2,7 @@ import threading
 import time
 
 from gpspublisher.devices import gps_devices
+from gpspublisher.publisher.publisher import GPSPublisher
 
 
 class GPSReader:
@@ -9,7 +10,7 @@ class GPSReader:
     Classe que faz a leitura continua dos dados de gps fornecidos pelo device
     """
 
-    def __init__(self, publisher, **kwargs):
+    def __init__(self, publisher: GPSPublisher, **kwargs):
         self._publisher = publisher
         self._config = kwargs
         self._thr = threading.Thread(

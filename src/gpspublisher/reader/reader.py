@@ -48,9 +48,6 @@ class GPSReader:
             raise ValueError(f"Device '{device_name}' não reconhecido")
 
         while not self._stop_flag.is_set():
-            # TODO: explicit call read/filter/format
-            f_gps_data = dev_obj.filtered_gps_data()
-            self._publisher.publish_gps_data(f_gps_data)
             # read, filter and format data from port
             raw_data = dev_obj.read_raw_data()
             dict_filtered_raw = dev_obj.filter_raw_data(raw_data)

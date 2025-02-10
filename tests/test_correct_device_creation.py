@@ -6,7 +6,8 @@ from gpspublisher.devices import gps_devices
 
 def test_gpsreader_creates_Neo6M_device():
     """
-    Testa se o GPSReader cria corretamente o objeto `dev_obj` com base no nome do dispositivo no config
+    Testa se o GPSReader cria corretamente o objeto `dev_obj` com base no \
+        nome do dispositivo no parametro de configuracao 'device'
     """
     dev_name = "Neo6M"
     publisher = GPSPublisher()

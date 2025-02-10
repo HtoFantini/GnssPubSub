@@ -1,4 +1,4 @@
-"Test filtro de dados crus com padrao nmea"
+"""Test Filtro de dados crus com padrao nmea"""
 import datetime
 
 from gpspublisher.utils.utils_filter import filter_raw_nmea

@@ -2,7 +2,7 @@ from gpspublisher.utils.utils import extract_keys, _get_fields_pynmea_parse, str
 from gpspublisher.utils.constants import DICT_NMEA
 
 
-def filter_raw_nmea(lines, protocol=DICT_NMEA):
+def filter_raw_nmea(lines, protocol=DICT_NMEA) -> dict:
 
     gps_info = dict(zip(extract_keys(), ""))
     li_keys_nmea = [list(ele.keys())[0] for ele in protocol]

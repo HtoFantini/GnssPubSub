@@ -3,7 +3,7 @@ import datetime
 from gpspublisher.utils.constants import DICT_NMEA_TYPES
 
 
-def format_dict_by_type(dicio_in):
+def format_dict_by_type(dicio_in) -> dict:
     dicio_out = {key: value for key, value in dicio_in.items() if value is not None}
 
     for key, expected_type in DICT_NMEA_TYPES.items():

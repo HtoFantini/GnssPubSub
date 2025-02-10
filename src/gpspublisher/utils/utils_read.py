@@ -3,7 +3,16 @@ import serial
 from gpspublisher.utils.constants import DICT_DEFAULT_PORTS
 
 
-def read_raw_serial(serial_port=None, baudrate=9600):
+def read_raw_serial(serial_port=None, baudrate=9600) -> str:
+    """_summary_
+
+    Args:
+        serial_port (_type_, optional): _description_. Defaults to None.
+        baudrate (int, optional): _description_. Defaults to 9600.
+
+    Returns:
+        str: _description_
+    """
 
     if serial_port is None:
         serial_port = DICT_DEFAULT_PORTS['Serial']

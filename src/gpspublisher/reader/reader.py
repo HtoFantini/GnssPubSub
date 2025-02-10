@@ -5,7 +5,8 @@ from gpspublisher.devices import gps_devices
 
 
 class GPSReader:
-    """Classe que faz a leitura continua dos dados de gps fornecidos pelo device
+    """
+    Classe que faz a leitura continua dos dados de gps fornecidos pelo device
     """
 
     def __init__(self, publisher, **kwargs):
@@ -20,18 +21,21 @@ class GPSReader:
         return self._config
 
     def start_thread(self):
-        """Encapsulamento para inicialização da thread
+        """
+        Encapsulamento para inicialização da thread
         """
         self._stop_flag.clear()
         self._thr.start()
 
     def stop_thread(self):
-        """Set do evento que para a execução da thread
+        """
+        Set do evento que para a execução da thread
         """
         self._stop_flag.set()
 
     def target_read_loop(self):
-        """Loop que le o arquivo de configuracao e mantem a leitura dos dados \
+        """
+        Loop que le o arquivo de configuracao e mantem a leitura dos dados \
             de gps do device continuamente
         """
         try:

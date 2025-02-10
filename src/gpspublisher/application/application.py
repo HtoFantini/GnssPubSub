@@ -3,6 +3,9 @@ from gpspublisher.publisher.publisher import GPSPublisher
 
 
 class Gps:
+    """
+    Classe de aplicação que simplifica a interação cliente <-> sistema
+    """
 
     def __init__(self, configs):
         self._configs = configs

@@ -1,7 +1,7 @@
 """Test Configuracao dinamica do device"""
+from unittest.mock import MagicMock, patch
 import pytest
 
-from unittest.mock import MagicMock, patch
 from gpspublisher.reader.reader import GPSReader
 from gpspublisher.devices import gps_devices
 from gpspublisher.application.application import Gps

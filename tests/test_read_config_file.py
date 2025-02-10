@@ -53,3 +53,18 @@ def test_gpsreader_valid_device():
         gps_reader._stop_flag.set()
         gps_reader.target_read_loop()
         mock_device_class.assert_called_once()
+
+
+def test_configs_forwarding_gps_to_gpsreader():
+    """
+    Testa se a classe Gps passa corretamente as configurações para a GPSReader
+    """
+    configs = {"read_time": 1, "device": "Neo6M"}
+
+    gps = Gps(configs)
+
+    # Obtém as configurações que chegaram ao GPSReader
+    reader_configs = gps.get_configs()
+
+    assert reader_configs == configs, f"As configurações esperadas eram \
+                                            {configs}, mas foram {reader_configs}"

@@ -14,9 +14,13 @@ class Device(ABC):
         self._port = port
 
     @abstractmethod
-    def read_raw_data(self):
+    def read_raw_data(self) -> str:
         pass
 
     @abstractmethod
-    def filtered_gps_data(self):
+    def filter_raw_data(self, raw_lines) -> dict:
+        pass
+
+    @abstractmethod
+    def format_gps_data(self, dicio_in) -> dict:
         pass

@@ -21,7 +21,7 @@ def filter_raw_nmea(lines, protocol=DICT_NMEA) -> dict:
 
 if __name__ == "__main__":
 
-    lines = ("$GPVTG,140.88,T,,M,8.04,N,14.89,K,D*05\r\n"
+    LINES = ("$GPVTG,140.88,T,,M,8.04,N,14.89,K,D*05\r\n"
              "$GPGGA,184353.07,1929.045,S,02410.506,"
              "E,1,04,2.6,100.00,M,-33.9,M,,0000*6D\r\n"
              "$GPRMC,123519,A,4807.038,N,01131.000,E"

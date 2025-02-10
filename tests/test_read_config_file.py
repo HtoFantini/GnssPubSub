@@ -50,7 +50,7 @@ def test_gpsreader_valid_device():
 
     with patch.object(gps_devices, "Neo6M", MagicMock()) as mock_device_class:
         gps_reader = GPSReader(publisher, **config)
-        gps_reader._stop_flag.set()
+        gps_reader.stop_thread()
         gps_reader.target_read_loop()
         mock_device_class.assert_called_once()
 

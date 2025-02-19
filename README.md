@@ -19,13 +19,13 @@ Para instalar o <GPS>, siga estas etapas:
 
 Linux e Windows (poetry):
 
-```
+```shell
 poetry add git+https://github.com/HarpiaHarpyja/GpsPublisher.git@v0.1.0
 ```
 
 Linux e Windows (pip):
 
-```
+```shell
 pip install git+https://github.com/HarpiaHarpyja/GpsPublisher.git@v0.1.0
 ```
 
@@ -33,8 +33,22 @@ pip install git+https://github.com/HarpiaHarpyja/GpsPublisher.git@v0.1.0
 
 Para usar <GPS>, siga estas etapas:
 
-```
-<exemplo_de_uso>
+```python
+from typing import Dict, Any
+from gpspublisher.application.application import Gps
+
+# Seleciona o Device GPS e qual é a frequência de leitura em segundos
+gps = Gps({"device": "Neo6M", "read_time": 1})
+
+# Inicial o Device para leitura contínua
+gps.start_gps_thread()
+
+# Consulta o dado recente do gps
+dict_gps: Dict[str, Any] = gps.get_gps()
+
+# Finaliza o Device de leitura do gps
+gps.stop_gps_thread()
+
 ```
 
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!

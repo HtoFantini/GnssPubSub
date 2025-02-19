@@ -1,3 +1,4 @@
+"""Publisher"""
 import threading
 
 
@@ -17,7 +18,6 @@ class GPSPublisher:
         Args:
             gps_data (_type_): dado de GPS recebido
         """
-        # TODO priority writer over reader
         with self._lock:
             self._gps_data = gps_data
 

@@ -1,9 +1,19 @@
+"""Format"""
 import datetime
 
 from gpspublisher.utils.constants import DICT_NMEA_TYPES
 
 
 def format_dict_by_type(dicio_in) -> dict:
+    """
+    Formata os dados do GPS em um dicionario com as chaves esperadas pelo sistema
+
+    Args:
+        dicio_in (dict): Dicionario com os dados do GPS nao formatados
+
+    Returns:
+        dict: Dicionario com os dados do GPS formatados
+    """
     dicio_out = {key: value for key, value in dicio_in.items() if value is not None}
 
     for key, expected_type in DICT_NMEA_TYPES.items():

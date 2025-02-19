@@ -1,3 +1,4 @@
+"""Devices"""
 from gpspublisher.devices.interface_device import Device
 from gpspublisher.utils.utils_read import read_raw_serial
 from gpspublisher.utils.utils_filter import filter_raw_nmea

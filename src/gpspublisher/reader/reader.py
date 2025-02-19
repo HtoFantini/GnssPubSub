@@ -1,3 +1,4 @@
+"""Reader"""
 import threading
 import time
 
@@ -19,6 +20,10 @@ class GPSReader:
         self._stop_flag = threading.Event()
 
     def get_configs(self):
+        """
+        Retorna o dicionário de configuração que foi passado para a instância
+        da classe
+        """
         return self._config
 
     def start_thread(self):

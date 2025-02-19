@@ -1,8 +1,8 @@
+"""Generic utils functions"""
+from typing import Dict, List
+import time
 from functools import wraps
 import pynmea2
-import time
-from typing import Dict
-from typing import List
 
 from gpspublisher.utils.constants import DICT_NMEA, SOG_CONST
 

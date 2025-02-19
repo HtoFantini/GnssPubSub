@@ -2,6 +2,7 @@
 import threading
 import time
 
+from gpspublisher.devices.interface_device import Device
 from gpspublisher.devices import gps_devices
 from gpspublisher.publisher.publisher import GPSPublisher
 
@@ -53,7 +54,7 @@ class GPSReader:
 
         try:
             dev_class = getattr(gps_devices, device_name)
-            dev_obj = dev_class()
+            dev_obj: Device = dev_class()
         except AttributeError:
             raise ValueError(f"Device '{device_name}' não reconhecido")
 

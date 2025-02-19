@@ -1,6 +1,8 @@
+"""Reader"""
 import threading
 import time
 
+from gpspublisher.devices.interface_device import Device
 from gpspublisher.devices import gps_devices
 from gpspublisher.publisher.publisher import GPSPublisher
 
@@ -19,6 +21,10 @@ class GPSReader:
         self._stop_flag = threading.Event()
 
     def get_configs(self):
+        """
+        Retorna o dicionário de configuração que foi passado para a instância
+        da classe
+        """
         return self._config
 
     def start_thread(self):
@@ -48,7 +54,7 @@ class GPSReader:
 
         try:
             dev_class = getattr(gps_devices, device_name)
-            dev_obj = dev_class()
+            dev_obj: Device = dev_class()
         except AttributeError:
             raise ValueError(f"Device '{device_name}' não reconhecido")
 

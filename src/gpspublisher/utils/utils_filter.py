@@ -1,8 +1,32 @@
-from gpspublisher.utils.utils import extract_keys, _get_fields_pynmea_parse, str_datetime_formated
+"""Filter"""
+from typing import Dict
+from gpspublisher.utils.utils import (
+    extract_keys,
+    _get_fields_pynmea_parse,
+    str_datetime_formated
+)
 from gpspublisher.utils.constants import DICT_NMEA
 
 
-def filter_raw_nmea(lines, protocol=DICT_NMEA) -> dict:
+def filter_raw_nmea(lines, protocol: Dict = None) -> dict:
+    """
+    Recebe uma string com os dados brutos de gps no formato nmea e retorna um
+    dicionario com as informacoes extraidas.
+
+    Parameters
+    ----------
+    lines : str
+        String com os dados brutos de gps no formato nmea.
+    protocol : list of dicts
+        Dicionario com as informacoes sobre o protocolo nmea.
+
+    Returns
+    -------
+    dict
+        Dicionario com as informacoes extraidas do dado bruto.
+    """
+    if protocol is None:
+        protocol = DICT_NMEA
 
     gps_info = dict(zip(extract_keys(), ""))
     li_keys_nmea = [list(ele.keys())[0] for ele in protocol]

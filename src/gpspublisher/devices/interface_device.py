@@ -1,3 +1,4 @@
+"""Device minimum methods"""
 from abc import ABC, abstractmethod
 
 
@@ -15,12 +16,30 @@ class Device(ABC):
 
     @abstractmethod
     def read_raw_data(self) -> str:
-        pass
+        """Reads raw data from the device.
+
+        Returns:
+            str: Raw data read from the device in string format.
+        """
 
     @abstractmethod
     def filter_raw_data(self, raw_lines) -> dict:
-        pass
+        """Filters and processes the raw data read from the device
+
+        Args:
+            raw_lines (str): Raw data read from the device in string format.
+
+        Returns:
+            dict: Filtered and processed data in dictionary format.
+        """
 
     @abstractmethod
     def format_gps_data(self, dicio_in) -> dict:
-        pass
+        """Formats the GPS data to the expected output format
+
+        Args:
+            dicio_in (dict): Filtered and processed data in dictionary format.
+
+        Returns:
+            dict: Formatted GPS data in dictionary format.
+        """

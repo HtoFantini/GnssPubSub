@@ -1,3 +1,5 @@
+"""Contants"""
+
 DICT_DEFAULT_PORTS = {
     'Serial': '/dev/ttyAMA0',
 }

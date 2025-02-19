@@ -1,3 +1,4 @@
+"""Read utils"""
 import serial
 
 from gpspublisher.utils.constants import DICT_DEFAULT_PORTS

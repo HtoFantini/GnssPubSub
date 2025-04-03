@@ -48,8 +48,13 @@ def errors_pynmea(func):
     def wrapper(*args, **kwargs):
         try:
             result = func(*args, **kwargs)
-        except pynmea2.ParseError:
-            # print(f"{func.__name__}: Parse error: {e}")
+        except (pynmea2.ParseError, pynmea2.nmea.ChecksumError, ValueError,
+                StopIteration) as e:
+            print(f"{str_datetime_formated()}: {func.__name__}: Error: {e}")
+            result = {}
+        except Exception as e:
+            print(f"{str_datetime_formated()}: {func.__name__}: "
+                  f"Bare Exception! Error: {e}")
             result = {}
         return result
     return wrapper

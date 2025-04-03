@@ -49,3 +49,15 @@ def test_filter_incomplete_nmea_raw_data_():
     dict_out = filter_raw_nmea(lines)
 
     assert expected_dict_out == dict_out
+
+
+def test_filter_corrupted_nmea_raw_data():
+
+    lines = ('xb bʒr  bbbbbbR  jR":     q ')
+
+    expected_dict_out = {}
+
+    dict_out = filter_raw_nmea(lines)
+    print(dict_out)
+
+    assert expected_dict_out == dict_out

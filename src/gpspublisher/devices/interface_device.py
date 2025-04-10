@@ -9,13 +9,14 @@ class Device(ABC):
         ABC (_type_): _description_
     """
 
-    def __init__(self, protocol, baudrate, port):
+    def __init__(self, protocol, baudrate, port, port_obj):
         self._protocol = protocol
         self._baudrate = baudrate
         self._port = port
+        self._port_obj = port_obj
 
     @abstractmethod
-    def read_raw_data(self) -> str:
+    def read_raw_data(self, port_obj) -> str:
         """Reads raw data from the device.
 
         Returns:

@@ -4,7 +4,7 @@ import serial
 from gpspublisher.utils.constants import DICT_DEFAULT_PORTS
 
 
-def read_raw_serial(serial_port=None, baudrate=9600, test=False) -> str:
+def read_raw_serial(serial_obj=None, test=False) -> str:
     """_summary_
 
     Args:
@@ -15,11 +15,11 @@ def read_raw_serial(serial_port=None, baudrate=9600, test=False) -> str:
         str: _description_
     """
 
-    if serial_port is None:
-        serial_port = DICT_DEFAULT_PORTS['Serial']
+    if serial_obj is None:
+        serial_obj = DICT_DEFAULT_PORTS['Serial']
 
     # if test is False:
-    if test is True:
+    if test:
         lines = ("$GPVTG,140.88,T,,M,8.04,N,14.89,K,D*05\r\n"
                  "$GPGGA,184353.07,1929.045,S,02410.506,"
                  "E,1,04,2.6,100.00,M,-33.9,M,,0000*6D\r\n"
@@ -27,13 +27,11 @@ def read_raw_serial(serial_port=None, baudrate=9600, test=False) -> str:
                  ",022.4,084.4,230394,003.1,W*6A")
 
     else:
-        with serial.Serial(serial_port, baudrate, timeout=1,
-                           bytesize=serial.EIGHTBITS,
-                           parity=serial.PARITY_NONE,
-                           stopbits=serial.STOPBITS_ONE) as serial_port:
 
-            lines = serial_port.read(size=int(10e5)) \
-                .decode('utf-8', errors='replace') \
-                .strip()
+        lines = serial_obj.read(size=int(10e5)) \
+            .decode('utf-8', errors='replace') \
+            .strip()
+
+        # print(lines)
 
     return lines

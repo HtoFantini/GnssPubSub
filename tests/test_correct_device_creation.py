@@ -1,14 +1,22 @@
 """Test Criação do Device"""
+import serial
+
+from unittest.mock import MagicMock
 from gpspublisher.reader.reader import GPSReader
 from gpspublisher.publisher.publisher import GPSPublisher
 from gpspublisher.devices import gps_devices
 
 
-def test_gpsreader_creates_Neo6M_device():
+def test_gpsreader_creates_Neo6M_device(monkeypatch):
     """
     Testa se o GPSReader cria corretamente o objeto `dev_obj` com base no \
         nome do dispositivo no parametro de configuracao 'device'
     """
+
+    # Mock da serial.Serial
+    mock_serial = MagicMock()
+    monkeypatch.setattr(serial, 'Serial', mock_serial)
+
     dev_name = "Neo6M"
     publisher = GPSPublisher()
     config = {"read_time": 1, "device": dev_name}

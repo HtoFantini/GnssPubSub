@@ -1,12 +1,18 @@
 import threading
 import time
-from unittest.mock import patch
+import serial
+
+from unittest.mock import MagicMock, patch
 
 from gpspublisher.application.application import Gps
 
 
-def test_multiplos_cliente_gps_Neo6M(n_threads=1000):
+def test_multiplos_cliente_gps_Neo6M(monkeypatch, n_threads=1000):
     """ Teste sistêmico para validar o fluxo completo do GPS """
+    # Mock da serial.Serial
+
+    mock_serial = MagicMock()
+    monkeypatch.setattr(serial, 'Serial', mock_serial)
 
     configs = {"read_time": 0.1, "device": "Neo6M"}
 

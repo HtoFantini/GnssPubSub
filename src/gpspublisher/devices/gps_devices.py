@@ -1,4 +1,6 @@
 """Devices"""
+import serial
+
 from gpspublisher.devices.interface_device import Device
 from gpspublisher.utils.utils_read import read_raw_serial
 from gpspublisher.utils.utils_filter import filter_raw_nmea
@@ -15,10 +17,15 @@ class Neo6M(Device):
         _protocol = DICT_NMEA
         _baudrate = 9600
         _port = DICT_DEFAULT_PORTS["Serial"]
-        super().__init__(_protocol, _baudrate, _port)
+        _port_obj = serial.Serial(_port, _baudrate, timeout=1,
+                                  bytesize=serial.EIGHTBITS,
+                                  parity=serial.PARITY_NONE,
+                                  stopbits=serial.STOPBITS_ONE)
+
+        super().__init__(_protocol, _baudrate, _port, _port_obj)
 
     def read_raw_data(self) -> str:
-        return read_raw_serial(serial_port=self._port, baudrate=self._baudrate)
+        return read_raw_serial(serial_obj=self._port_obj)
 
     def filter_raw_data(self, raw_lines) -> dict:
         return filter_raw_nmea(lines=raw_lines, protocol=self._protocol)

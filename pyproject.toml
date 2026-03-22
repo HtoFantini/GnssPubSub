@@ -2,7 +2,7 @@
 name = "gpspublisher"
 version = "0.2.0"
 description = "Read and publish gps data from a device"
-authors = ["Henrique Tropia De Oliveira Fantini <henrique@harpia.tec.br>"]
+authors = ["Henrique Tropia De Oliveira Fantini <htofantini@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

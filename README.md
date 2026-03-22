@@ -20,13 +20,13 @@ Para instalar o <GPS>, siga estas etapas:
 Linux e Windows (poetry):
 
 ```shell
-poetry add git+https://github.com/HarpiaHarpyja/GpsPublisher.git@v0.1.0
+poetry add git+https://github.com/HtoFantini/GnssPubSub.git
 ```
 
 Linux e Windows (pip):
 
 ```shell
-pip install git+https://github.com/HarpiaHarpyja/GpsPublisher.git@v0.1.0
+pip install git+https://github.com/HtoFantini/GnssPubSub.git
 ```
 
 ## ☕ Executando <GPS>

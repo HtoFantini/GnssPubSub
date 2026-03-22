@@ -2,10 +2,6 @@
 
 > Biblioteca genérica para utilizar GPS nos diversos projetos. Ele deve concentrar os diversos dispositivos GPSs de forma a padronizar o acesso a seus dados e disponibilização deles
 
-## 📝 Notas de atualização do produto
-
-* (19/02/2025) &#8594; Biblioteca inicial com device Neo6m
-
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
@@ -50,5 +46,3 @@ dict_gps: Dict[str, Any] = gps.get_gps()
 gps.stop_gps_thread()
 
 ```
-
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!
